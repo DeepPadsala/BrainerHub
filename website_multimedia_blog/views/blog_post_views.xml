@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_blog_post_form_inherit_multimedia" model="ir.ui.view">
+        <field name="name">blog.post.form.inherit.multimedia</field>
+        <field name="model">blog.post</field>
+        <field name="inherit_id" ref="website_blog.blog_post_view_form_add"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="content_type" widget="radio" options="{'horizontal': true}"/>
+            </xpath>
+            <xpath expr="//group" position="after">
+                <group string="Multimedia Settings">
+                    <field name="music_artist" invisible="content_type != 'music'"/>
+                    <field name="music_url" invisible="content_type != 'music'"/>
+                    <field name="video_url" invisible="content_type != 'video'"/>
+                    <field name="magazine_url" invisible="content_type != 'magazine'"/>
+                    <field name="collection_ids" widget="many2many_tags" invisible="content_type != 'collection'"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
